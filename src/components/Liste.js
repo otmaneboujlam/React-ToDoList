@@ -1,10 +1,14 @@
 import Action from "./Action"
 
-function Liste({taches, remove}) {
+function Liste({taches, remove, toggleEdit, edit}) {
     return <ul className="list-group my-3 mx-1" id="list">
-           {taches.map(tache => <li className="list-group-item d-flex flex-row justify-content-between align-items-center p-2" key = {tache.id}>
-                                    <p className="text-break my-0 mx-1">{tache.text}</p>
-                                    <Action id = {tache.id} remove = {remove}/>
+           {taches.map(tache => <li className="list-group-item d-flex flex-row justify-content-between align-items-center p-1" key = {tache.id}>
+                                    {tache.editable === false ?  
+                                        <p className="text-break my-0 mx-1">{tache.text}</p>  
+                                        : 
+                                        <input type="text" className="form" defaultValue={tache.text} id="editToDo" /> 
+                                    }
+                                    <Action tache = {tache} remove = {remove} toggleEdit = {toggleEdit} edit = {edit}/>
                                 </li>)}
         </ul>
     

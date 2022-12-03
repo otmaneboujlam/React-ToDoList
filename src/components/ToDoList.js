@@ -8,7 +8,7 @@ function ToDoList(){
         let text = document.querySelector("#toDo")
         const id = crypto.randomUUID()
         if(text.value) {
-            const tache = {"id" : id , "text" : text.value}
+            const tache = {"id" : id , "text" : text.value, "editable" : false}
             setTaches([tache, ...taches])
             text.value = ''
             text.focus()   
@@ -21,6 +21,20 @@ function ToDoList(){
         )
     }
 
+    function toggleEdit(id) {
+        setTaches(
+          taches.map(tache => tache.id === id
+            ? { ...tache, editable: !tache.editable }
+            : tache
+          )
+        )
+    }
+
+    function edit(tache) {
+        tache.text = document.querySelector('#editToDo').value
+        setTaches([...taches])
+    }
+
     return <>
             <div className="input-group m-3 w-auto">
                 <input type="text" className="form-control m-1" placeholder="To do" id="toDo" />
@@ -28,7 +42,7 @@ function ToDoList(){
                     <button className="btn btn-outline-secondary" type="button" onClick={add} >Add</button>
                 </div>
             </div>
-            <Liste taches = {taches} remove = {remove}/>
+            <Liste taches = {taches} remove = {remove} toggleEdit = {toggleEdit} edit = {edit}/>
         </>
 }
 
