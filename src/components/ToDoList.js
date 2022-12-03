@@ -15,6 +15,12 @@ function ToDoList(){
         }        
     }
 
+    function remove(id) {
+        setTaches(
+            taches.filter(tache => tache.id !== id)
+        )
+    }
+
     return <>
             <div className="input-group m-3 w-auto">
                 <input type="text" className="form-control m-1" placeholder="To do" id="toDo" />
@@ -22,7 +28,7 @@ function ToDoList(){
                     <button className="btn btn-outline-secondary" type="button" onClick={add} >Add</button>
                 </div>
             </div>
-            <Liste taches = {taches}/>
+            <Liste taches = {taches} remove = {remove}/>
         </>
 }
 
