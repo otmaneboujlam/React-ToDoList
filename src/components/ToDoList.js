@@ -31,7 +31,8 @@ function ToDoList(){
     }
 
     function edit(tache) {
-        const text = document.querySelector(`#${tache.id}`).value
+        console.log(tache.id)
+        const text = document.getElementById(`${tache.id}`).value
         console.log(text)
         if(text) {
             tache.text = text
