@@ -6,7 +6,7 @@ function Liste({taches, remove, toggleEdit, edit}) {
                                     {tache.editable === false ?  
                                         <p className="text-break my-0 mx-1">{tache.text}</p>  
                                         : 
-                                        <input type="text" autoFocus defaultValue={tache.text} id="editToDo" /> 
+                                        <input type="text" autoFocus defaultValue={tache.text} id={tache.id} /> 
                                     }
                                     <Action tache = {tache} remove = {remove} toggleEdit = {toggleEdit} edit = {edit}/>
                                 </li>)}
