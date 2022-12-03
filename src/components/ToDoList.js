@@ -31,15 +31,18 @@ function ToDoList(){
     }
 
     function edit(tache) {
-        tache.text = document.querySelector('#editToDo').value
-        setTaches([...taches])
+        const text = document.querySelector('#editToDo').value
+        if(text) {
+            tache.text = text
+            setTaches([...taches])
+        }
     }
 
     return <>
             <div className="input-group m-3 w-auto">
                 <input type="text" className="form-control m-1" placeholder="To do" id="toDo" />
                 <div className="input-group-append m-1">
-                    <button className="btn btn-outline-secondary" type="button" onClick={add} >Add</button>
+                    <button className="btn btn-outline-primary btn-lg" type="button" onClick={add} >Add</button>
                 </div>
             </div>
             <Liste taches = {taches} remove = {remove} toggleEdit = {toggleEdit} edit = {edit}/>
