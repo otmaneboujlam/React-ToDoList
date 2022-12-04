@@ -31,9 +31,7 @@ function ToDoList(){
     }
 
     function edit(tache) {
-        console.log(tache.id)
         const text = document.getElementById(`${tache.id}`).value
-        console.log(text)
         if(text) {
             tache.text = text
             setTaches([...taches])
@@ -41,6 +39,7 @@ function ToDoList(){
     }
 
     return <>
+            <h1 className="text-center m-3">To do list</h1>
             <div className="input-group m-3 w-auto">
                 <input type="text" className="form-control m-1" placeholder="To do" id="toDo" />
                 <div className="input-group-append m-1">
